@@ -1,0 +1,31 @@
+Zadání Webová aplikace
+
+Vytvořte webovou hru z nabídky níže pomocí HTML, CSS a JavaScriptu, které dodáte jednu svou originální funkcionalitu. Funkcionalita se může týkat čehokoliv, co danou hru ozvláštní, například třetí hráč do piškvorek, hledání trojic v pexesu, šibenice pro matematické rovnice... Buďte kreativní, spojte to například se svým zájmem nebo s něčím, co aktuálně potřebujete. Webová hra bude obsahovat vhodný design.
+
+Možnosti her, které můžete vytvořit:
+
+Piškvorky s polem 10x10 nebo více Pexeso Šibenice Kvíz Hledání min Váš nápad podobné náročnosti, jako ostatní hry. (nutná konzultace s učitelem).
+
+Práce s verzovacím systémem Git
+
+V rámci vytváření práce budete pracovat s verzovacím systémem Git, kde provedete minimálně 3 commity, které budou dokumentovat vývoj vaší webové hry. Požadavky na commity:
+
+První commit bude obsahovat začátek vývoje - vytvoření souborů, základní šablony. Druhý commit bude obsahovat stav po přidání základní logiky vaší hry dle vašeho uvážení. Třetí commit bude obsahovat hotovou aplikaci. Toto je minimální rozsah commitů, pokud jich bude více, nevadí. Odevzdání Datum odevzdání je závazné a po jeho překročení práci nebude možné odevzdat. V případě závažných důvodů je možné termín odevzdání posunout po individuální konzultaci.
+
+Práci odevzdáte prostřednictvím dvou odkazů:
+
+na GitHub (nebo jinou git platformu) se zdrojovým kódem vaší webové hry a s viditelnou historií commitů, na školní hosting (nebo jiný), kde bude hostovaná vaše webová hra. Prezentace Na nejbližší hodině po termínu odevzdání se uskuteční prezentace všech prací. Nemusíte si nic navíc připravovat, promítnuta bude vaše webová hra a zdrojový kód.
+
+Součástí bude představení a ukázka vaší práce a následný rozbor logiky hry (kódu JavaScriptu). Během prezentování mohou být pokládány dotazy, které budou ověřovat znalost vámi napsaného kódu a též znalost programovacího jazyka JavaScript.
+
+Hodnocení Vypracování - 1. známka váhy 3
+
+Hodnotí se:
+
+Výsledná funkčnost hry. Originalita přidané funkcionality. Propracovanost a přehlednost logiky hry (kód). Práce s verzovacím systémem Git. Prezentace - 2. známka váhy 7
+
+Hodnotí se:
+
+Srozumitelnost projevu. Představení webové hry. Pochopení a vysvětlování logiky hry (kódu). Znalost programovacího jazyka JavaScript.
+
+Neodevzdání nebo porušení [Pravidla pro používání umělé inteligence](https://moodle.skolakrizik.cz/mod/page/view.php?id=10353) se hodnotí obě části nedostatečně (5).
