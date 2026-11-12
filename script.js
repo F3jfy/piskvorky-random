@@ -1,20 +1,44 @@
-const BOARD_SIZE = 10;
 const boardElement = document.getElementById("board");
 const statusText = document.getElementById("status");
 const restartBtn = document.getElementById("restart");
 
+let BOARD_SIZE = 10;
+let WIN_LENGTH = 10;
 let currentPlayer = "X";
-let board = Array(BOARD_SIZE * BOARD_SIZE).fill("");
+let board = [];
 let isGameOver = false;
 
 function initBoard() {
-    boardElement.innerHTML = "";
+    BOARD_SIZE = getRandomFromMap(10, 14);
+    WIN_LENGTH = BOARD_SIZE;
+
     board = Array(BOARD_SIZE * BOARD_SIZE).fill("");
+    isGameOver = false;
+    currentPlayer = "X";
+    statusText.textContent = `Na tahu: ${currentPlayer} (${BOARD_SIZE}x${BOARD_SIZE}, cíl: ${WIN_LENGTH} v řadě)`;
+
+    boardElement.innerHTML = "";
+    boardElement.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 35px)`;
+
+    const obstacleCount = getRandomFromMap(1, 2);
+    const obstacleIndices = new Set();
+    while (obstacleIndices.size < obstacleCount) {
+        obstacleIndices.add(getRandomFromMap(0, BOARD_SIZE * BOARD_SIZE - 1));
+    }
+
     for (let i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
         const cell = document.createElement("button");
         cell.classList.add("cell");
         cell.dataset.index = i;
-        cell.addEventListener("click", handleCellClick);
+
+        if (obstacleIndices.has(i)) {
+            board[i] = "#";
+            cell.classList.add("obstacle");
+            cell.disabled = true;
+        } else {
+            cell.addEventListener("click", handleCellClick);
+        }
+
         boardElement.appendChild(cell);
     }
 }
@@ -39,7 +63,7 @@ function handleCellClick(event) {
         isGameOver = true;
     } else {
         currentPlayer = currentPlayer === "X" ? "O" : "X";
-        statusText.textContent = `Na tahu: ${currentPlayer}`;
+        statusText.textContent = `Na tahu: ${currentPlayer} (${BOARD_SIZE}x${BOARD_SIZE}, cíl: ${WIN_LENGTH} v řadě)`;
     }
 }
 
@@ -54,7 +78,7 @@ function checkWin(row, col) {
     for (let [dr, dc] of directions) {
         let count = 1;
 
-        for (let step = 1; step < 5; step++) {
+        for (let step = 1; step < WIN_LENGTH; step++) {
             const r = row + dr * step;
             const c = col + dc * step;
             if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r * BOARD_SIZE + c] === currentPlayer) {
@@ -64,7 +88,7 @@ function checkWin(row, col) {
             }
         }
 
-        for (let step = 1; step < 5; step++) {
+        for (let step = 1; step < WIN_LENGTH; step++) {
             const r = row - dr * step;
             const c = col - dc * step;
             if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r * BOARD_SIZE + c] === currentPlayer) {
@@ -74,7 +98,7 @@ function checkWin(row, col) {
             }
         }
 
-        if (count >= 5) {
+        if (count >= WIN_LENGTH) {
             return true;
         }
     }
@@ -83,9 +107,6 @@ function checkWin(row, col) {
 }
 
 restartBtn.addEventListener("click", () => {
-    currentPlayer = "X";
-    isGameOver = false;
-    statusText.textContent = "Na tahu: X";
     initBoard();
 });
 

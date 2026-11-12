@@ -13,25 +13,32 @@ body {
 
 #board {
     display: grid;
-    grid-template-columns: repeat(10, 40px);
-    grid-template-rows: repeat(10, 40px);
     gap: 4px;
     margin: 10px 0;
 }
 
 .cell {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     background-color: #fff;
     border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.cell:hover {
+.cell:hover:not(.obstacle):not(:disabled) {
     scale: 1.05;
     transition: all 0.15s ease;
+}
+
+.cell.obstacle {
+    background-color: #2b2b2b;
+    border-color: #1a1a1a;
+    cursor: not-allowed;
 }
 
 #restart {
