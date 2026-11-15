@@ -2,14 +2,14 @@ const boardElement = document.getElementById("board");
 const statusText = document.getElementById("status");
 const restartBtn = document.getElementById("restart");
 
-let BOARD_SIZE = 10;
-let WIN_LENGTH = 10;
+let BOARD_SIZE = 3;
+let WIN_LENGTH = 3;
 let currentPlayer = "X";
 let board = [];
 let isGameOver = false;
 
 function initBoard() {
-    BOARD_SIZE = getRandomFromMap(10, 14);
+    BOARD_SIZE = getRandomFromMap(2, 6);
     WIN_LENGTH = BOARD_SIZE;
 
     board = Array(BOARD_SIZE * BOARD_SIZE).fill("");
@@ -18,9 +18,10 @@ function initBoard() {
     statusText.textContent = `Na tahu: ${currentPlayer} (${BOARD_SIZE}x${BOARD_SIZE}, cíl: ${WIN_LENGTH} v řadě)`;
 
     boardElement.innerHTML = "";
-    boardElement.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 35px)`;
+    boardElement.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 50px)`;
 
-    const obstacleCount = getRandomFromMap(1, 2);
+    const maxObstacles = BOARD_SIZE <= 2 ? 1 : 2;
+    const obstacleCount = getRandomFromMap(1, maxObstacles);
     const obstacleIndices = new Set();
     while (obstacleIndices.size < obstacleCount) {
         obstacleIndices.add(getRandomFromMap(0, BOARD_SIZE * BOARD_SIZE - 1));
