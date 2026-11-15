@@ -55,7 +55,11 @@ function handleCellClick(event) {
 
     const row = Math.floor(index / BOARD_SIZE);
     const col = index % BOARD_SIZE;
-
+/**
+* AI Generated
+* Model: Gemini 3.8 Flash
+- Fix spatne napsana promena gg
+*/
     if (checkWin(row, col)) {
         statusText.textContent = `Vyhrál hráč ${currentPlayer}!`;
         isGameOver = true;
